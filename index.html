@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dashboard | Smart Irrigation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-left">
+        <div class="logo-box">SM</div>
+        <span class="nav-title">Smart Irrigation System</span>
+      </div>
+      <div class="nav-right">
+        <a href="index.html" class="nav-link active">Dashboard</a>
+        <a href="visual.html" class="nav-link">Visual Representation</a>
+        <a href="logs.html" class="nav-link">Logs</a>
+        <a href="about.html" class="nav-link">About</a>
+      </div>
+    </nav>
+
+    <!-- STUDENT HEADER CARD -->
+    <div class="student-info">
+      <div class="avatar-big">SM</div>
+      <div class="info-right">
+        <h2 class="student-name">Sandeep Mishra</h2>
+        <p class="student-bold">INDUSTRIAL INTERNET OF THINGS</p>
+        <p class="student-bold">2022-2026</p>
+        <p class="student-bold">Enrollment No: 03619051722</p>
+      </div>
+    </div>
+
+    <main class="container">
+      <!-- MODE CONTROL -->
+      <section class="card">
+        <h2>System Mode</h2>
+        <div class="mode-buttons">
+          <button class="btn" id="btnAuto">AUTO</button>
+          <button class="btn" id="btnManual">MANUAL</button>
+        </div>
+        <p class="small">
+          Current Mode: <span id="currentMode">Loading...</span>
+        </p>
+      </section>
+
+      <!-- PUMPS -->
+      <section class="card">
+        <h2>Pump Override (Manual Mode)</h2>
+
+        <div class="pump-grid" style="display: flex; gap: 20px">
+          <div class="pump-card card" style="flex: 1">
+            <h3>Pump A</h3>
+            <button class="btn on" data-pump="pumpA" data-val="on">ON</button>
+            <button class="btn off" data-pump="pumpA" data-val="off">
+              OFF
+            </button>
+            <p>Status: <span id="pumpAStatus">--</span></p>
+          </div>
+
+          <div class="pump-card card" style="flex: 1">
+            <h3>Pump B</h3>
+            <button class="btn on" data-pump="pumpB" data-val="on">ON</button>
+            <button class="btn off" data-pump="pumpB" data-val="off">
+              OFF
+            </button>
+            <p>Status: <span id="pumpBStatus">--</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIVE MOISTURE -->
+      <section class="card">
+        <h2>Live Moisture</h2>
+
+        <div class="gauge-grid">
+          <div class="gauge">
+            <p>Sensor A</p>
+            <div class="meter"><div class="meter-fill" id="gA">0%</div></div>
+          </div>
+
+          <div class="gauge">
+            <p>Sensor B</p>
+            <div class="meter"><div class="meter-fill" id="gB">0%</div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

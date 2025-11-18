@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>About | Smart Irrigation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-left">
+        <div class="logo-box">SM</div>
+        <span class="nav-title">Smart Irrigation System</span>
+      </div>
+      <div class="nav-right">
+        <a href="index.html" class="nav-link">Dashboard</a>
+        <a href="visual.html" class="nav-link">Visual Representation</a>
+        <a href="logs.html" class="nav-link">Logs</a>
+        <a href="about.html" class="nav-link active">About</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <!-- STUDENT INFO CARD -->
+      <section class="card">
+        <h2>Developer Information</h2>
+
+        <div style="display: flex; align-items: center; gap: 20px">
+          <div class="avatar-big">SM</div>
+
+          <div>
+            <h2 class="student-name">Sandeep Mishra</h2>
+
+            <p class="student-bold">INDUSTRIAL INTERNET</p>
+            <p class="student-bold">Batch: 2022 - 2026</p>
+            <p class="student-bold">Enrollment No: 03619051722</p>
+            <p class="student-bold">
+              UNIVERSITY SCHOOL OF AUTOMATION AND ROBOTICS
+            </p>
+          </div>
+        </div>
+
+        <p style="color: var(--muted); margin-top: 15px">
+          This dashboard is designed and developed as part of the Smart
+          Irrigation IoT System. The system monitors real-time soil moisture,
+          controls pumps automatically, and provides cloud logging + visual
+          representation of the entire irrigation process.
+        </p>
+      </section>
+
+      <!-- PROJECT INFO -->
+      <section class="card">
+        <h2>About the Smart Irrigation Project</h2>
+
+        <p style="color: var(--muted); line-height: 1.6">
+          The Smart Irrigation System uses an ESP32 microcontroller to
+          continuously monitor soil moisture levels using capacitive soil sensor
+          modules. Based on real-time readings, the system automatically decides
+          whether to activate the pumps in <strong>Auto Mode</strong>. It also
+          allows the user to completely override pump control in
+          <strong>Manual Mode</strong> using Firebase.
+        </p>
+
+        <ul style="color: var(--muted); margin-top: 10px; line-height: 1.6">
+          <li>✔ Real-time monitoring (Firebase Realtime Database)</li>
+          <li>✔ Auto/Manual mode switching</li>
+          <li>✔ Pump override control</li>
+          <li>✔ Live moisture display on dashboard</li>
+          <li>✔ Visual representation via ThingSpeak charts</li>
+          <li>✔ Cloud logging of moisture and pump state</li>
+          <li>✔ Fully responsive web dashboard (HTML/CSS/JS)</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+/* ---------- GLOBAL THEME ---------- */
+:root {
+  --bg: #0a0f1f;
+  --card: #11182b;
+  --accent: #2de4c7;
+  --accent-dark: #1fae96;
+  --text: #e7f5ff;
+  --muted: #8ea1b8;
+  --stroke: rgba(255, 255, 255, 0.05);
+  --glass: rgba(255, 255, 255, 0.03);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, Arial;
+}
+
+body {
+  background: linear-gradient(180deg, #050b16 0%, #0a0f1f 100%);
+  color: var(--text);
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  height: 68px;
+  padding: 0 30px;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--stroke);
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.4);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* SM logo block */
+.logo-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2de4c7, #0aada1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #001818;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.nav-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.nav-right {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent);
+}
+
+/* ---------- MAIN CONTAINER ---------- */
+.container {
+  max-width: 1080px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* ---------- CARDS ---------- */
+.card {
+  background: var(--glass);
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #001816;
+}
+
+.btn.on {
+  background: #10b981;
+  border-color: #10b981;
+  color: #001816;
+}
+
+.btn.off {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+}
+
+/* ---------- STUDENT CARD ---------- */
+.student-info {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 40px;
+  margin-top: 20px;
+}
+
+.avatar-big {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #2de4c7, #0aada1);
+  border-radius: 50%;
+  font-size: 28px;
+  color: #001816;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+}
+
+.info-right {
+  margin-left: 15px;
+}
+
+.student-name {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.student-bold {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ---------- GAUGES ---------- */
+.gauge-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gauge {
+  flex: 1;
+  min-width: 250px;
+}
+
+.meter {
+  background: var(--glass);
+  height: 50px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--stroke);
+}
+
+.meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2de4c7, #0aada1);
+  text-align: center;
+  color: #001816;
+  font-weight: 700;
+  padding-top: 14px;
+  transition: width 0.7s ease;
+}
+
+/* ---------- TABLES (LOGS PAGE) ---------- */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid var(--stroke);
+  padding: 12px;
+}
+
+.table th {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---------- IFRAME GRID (VISUAL PAGE) ---------- */
+.visual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+iframe {
+  width: 100%;
+  height: 320px;
+  border-radius: 14px;
+  border: none;
+  background: white;
+}
