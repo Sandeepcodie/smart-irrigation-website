@@ -42,10 +42,10 @@
         </div>
 
         <p style="color: var(--muted); margin-top: 15px">
-          This dashboard is designed and developed as part of the Smart
-          Irrigation IoT System. The system monitors real-time soil moisture,
-          controls pumps automatically, and provides cloud logging + visual
-          representation of the entire irrigation process.
+          This dashboard is developed as part of the Smart Irrigation IoT
+          System. It monitors real-time soil moisture, synchronizes with
+          ThingSpeak analytics, controls the pumps automatically through ESP32,
+          and logs activities to Firebase.
         </p>
       </section>
 
@@ -54,22 +54,110 @@
         <h2>About the Smart Irrigation Project</h2>
 
         <p style="color: var(--muted); line-height: 1.6">
-          The Smart Irrigation System uses an ESP32 microcontroller to
-          continuously monitor soil moisture levels using capacitive soil sensor
-          modules. Based on real-time readings, the system automatically decides
-          whether to activate the pumps in <strong>Auto Mode</strong>. It also
-          allows the user to completely override pump control in
-          <strong>Manual Mode</strong> using Firebase.
+          The Smart Irrigation System integrates hardware (ESP32 + Sensors +
+          Pumps) with cloud services (ThingSpeak + Firebase) to create a fully
+          automated irrigation platform. It uses:
         </p>
 
         <ul style="color: var(--muted); margin-top: 10px; line-height: 1.6">
-          <li>✔ Real-time monitoring (Firebase Realtime Database)</li>
-          <li>✔ Auto/Manual mode switching</li>
-          <li>✔ Pump override control</li>
-          <li>✔ Live moisture display on dashboard</li>
-          <li>✔ Visual representation via ThingSpeak charts</li>
-          <li>✔ Cloud logging of moisture and pump state</li>
-          <li>✔ Fully responsive web dashboard (HTML/CSS/JS)</li>
+          <li>✔ ESP32 microcontroller</li>
+          <li>✔ Capacitive soil moisture sensors (2 zones)</li>
+          <li>✔ Relay-based Pump Control</li>
+          <li>✔ Firebase Realtime Database</li>
+          <li>✔ ThingSpeak MATLAB Analytics Engine</li>
+          <li>✔ GitHub Pages Dashboard</li>
+        </ul>
+      </section>
+
+      <!-- SYSTEM ARCHITECTURE -->
+      <section class="card">
+        <h2>System Architecture</h2>
+
+        <p style="color: var(--muted); line-height: 1.6">
+          The system works in a fully synchronized loop:
+        </p>
+
+        <ul style="color: var(--muted); margin-top: 10px; line-height: 1.6">
+          <li>
+            <strong>1. ESP32 → ThingSpeak:</strong> ESP32 sends raw moisture
+            values and pump status to the input channel.
+          </li>
+
+          <li>
+            <strong>2. ThingSpeak → MATLAB Script:</strong> A MATLAB engine
+            processes the moisture into:
+            <ul>
+              <li>Zone Avg Moisture (%)</li>
+              <li>Depletion (Dr)</li>
+              <li>Irrigation Requirement (mm)</li>
+              <li>Water Required (liters)</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>3. ThingSpeak Output → ESP32:</strong> ESP32 fetches
+            analytics and updates Firebase via WiFi.
+          </li>
+
+          <li>
+            <strong>4. Firebase → Dashboard:</strong> This website reads live
+            data from Firebase and shows:
+            <ul>
+              <li>Moisture Levels</li>
+              <li>Mode: AUTO / MANUAL</li>
+              <li>Pump Status</li>
+              <li>Thresholds</li>
+              <li>Analytics (via ThingSpeak charts)</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <!-- FIREBASE STRUCTURE -->
+      <section class="card">
+        <h2>Firebase Realtime Database Structure</h2>
+
+        <p class="muted">The project uses the following Firebase nodes:</p>
+
+        <pre style="color: var(--accent); background: var(--glass); padding: 15px; border-radius: 10px;">
+/data
+    sensor1
+    sensor2
+    pump1
+    pump2
+    zoneA_avg
+    zoneB_avg
+    dr_a_mm
+    dr_b_mm
+    irrig_a_mm
+    irrig_b_mm
+    water_a_L
+    water_b_L
+    time
+
+/mode
+    auto  (true/false)
+
+/override
+    pump1
+    pump2
+
+/threshold
+    sensor1
+    sensor2
+
+/logs
+    timestamp: {event, value}
+        </pre>
+      </section>
+
+      <section class="card">
+        <h2>ThingSpeak Channels Used</h2>
+
+        <ul style="color: var(--muted); line-height: 1.6">
+          <li><strong>Input Channel:</strong> 3165085 (Raw Moisture & Pump)</li>
+          <li><strong>Output Channel:</strong> 3167169 (Analytics MATLAB)</li>
+          <li>Charts are embedded directly on the Visualization page.</li>
         </ul>
       </section>
     </main>
