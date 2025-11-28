@@ -21,9 +21,13 @@
       }
 
       @media (max-width: 768px) {
-        .visual-grid {
-          grid-template-columns: 1fr;
-        }
+        .visual-grid { grid-template-columns: 1fr; }
+      }
+
+      .section-title {
+        margin: 20px 0 12px;
+        font-size: 22px;
+        font-weight: 800;
       }
     </style>
   </head>
@@ -45,42 +49,96 @@
 
     <main class="container">
 
+      <!-- HEADER -->
       <section class="card">
         <h2>Visual Representation</h2>
         <p class="muted">
-          Live moisture readings and analytics rendered directly from ThingSpeak
-          channels. Auto-updates every 20 seconds.
+          Live analytics powered by ThingSpeak and MATLAB Visualizations.  
+          Widgets, gauges, raw charts and analytic charts auto-update with every new ESP32 data upload.
         </p>
       </section>
 
-      <!-- ThingSpeak Live Charts -->
+      <!-- ================================
+           MATLAB VISUALIZATIONS
+      ================================= -->
       <section class="card">
-        <h2>Live Charts</h2>
+        <h2 class="section-title">📈 MATLAB Visualizations</h2>
+
+        <div class="visual-grid">
+
+          <!-- 1. Raw Moisture Trend -->
+          <iframe src="https://thingspeak.mathworks.com/apps/matlab_visualizations/646109"></iframe>
+
+          <!-- 2. Soil Water Depletion -->
+          <iframe src="https://thingspeak.mathworks.com/apps/matlab_visualizations/646110"></iframe>
+
+          <!-- 3. Irrigation Depth Over Time -->
+          <iframe src="https://thingspeak.mathworks.com/apps/matlab_visualizations/646115"></iframe>
+
+          <!-- 4. Water Volume Required -->
+          <iframe src="https://thingspeak.mathworks.com/apps/matlab_visualizations/646116"></iframe>
+
+        </div>
+      </section>
+
+      <!-- ================================
+           RAW SENSOR & ANALYTICS CHARTS
+      ================================= -->
+      <section class="card">
+        <h2 class="section-title">📊 ThingSpeak Charts</h2>
 
         <div class="visual-grid">
 
           <!-- Sensor A -->
-          <iframe
-            src="https://thingspeak.com/channels/3165085/charts/1?bgcolor=%23050b16&color=%232de4c7&dynamic=true&type=line&results=60&update=20"
-          ></iframe>
+          <iframe src="https://thingspeak.com/channels/3165085/charts/1?bgcolor=%230a0f1f&color=%232de4c7&dynamic=true&type=line&results=60&update=20"></iframe>
 
           <!-- Sensor B -->
-          <iframe
-            src="https://thingspeak.com/channels/3165085/charts/2?bgcolor=%23050b16&color=%231fae96&dynamic=true&type=line&results=60&update=20"
-          ></iframe>
+          <iframe src="https://thingspeak.com/channels/3165085/charts/2?bgcolor=%230a0f1f&color=%231fae96&dynamic=true&type=line&results=60&update=20"></iframe>
 
-          <!-- Zone A Analytics -->
-          <iframe
-            src="https://thingspeak.com/channels/3167169/charts/1?bgcolor=%23050b16&color=%232de4c7&dynamic=true&type=line&results=60&update=20"
-          ></iframe>
+          <!-- Zone A Avg -->
+          <iframe src="https://thingspeak.com/channels/3167169/charts/1?bgcolor=%230a0f1f&color=%232de4c7&dynamic=true&type=line&results=60&update=20"></iframe>
 
-          <!-- Zone B Analytics -->
-          <iframe
-            src="https://thingspeak.com/channels/3167169/charts/2?bgcolor=%2311162b&color=%230aada1&dynamic=true&type=line&results=60&update=20"
-          ></iframe>
+          <!-- Zone B Avg -->
+          <iframe src="https://thingspeak.com/channels/3167169/charts/2?bgcolor=%230a0f1f&color=%230aada1&dynamic=true&type=line&results=60&update=20"></iframe>
 
         </div>
       </section>
+
+      <!-- ================================
+           WIDGETS (GAUGES + PARAMETERS)
+      ================================= -->
+      <section class="card">
+        <h2 class="section-title">🌡 ThingSpeak Widgets (Gauges & Numbers)</h2>
+
+        <div class="visual-grid">
+
+          <!-- Moisture Zone A Gauge -->
+          <iframe src="https://thingspeak.mathworks.com/channels/3167169/widgets/1176626"></iframe>
+
+          <!-- Moisture Zone B Gauge -->
+          <iframe src="https://thingspeak.mathworks.com/channels/3167169/widgets/1176628"></iframe>
+
+          <!-- Soil Depletion Zone A -->
+          <iframe src="https://thingspeak.mathworks.com/channels/3167169/widgets/1176631"></iframe>
+
+          <!-- Soil Depletion Zone B -->
+          <iframe src="https://thingspeak.mathworks.com/channels/3167169/widgets/1176637"></iframe>
+
+          <!-- Irrigation Depth Zone A -->
+          <iframe src="https://thingspeak.mathworks.com/channels/3167169/widgets/1176641"></iframe>
+
+          <!-- Irrigation Depth Zone B -->
+          <iframe src="https://thingspeak.mathworks.com/channels/3167169/widgets/1176642"></iframe>
+
+          <!-- Water Needed Zone A -->
+          <iframe src="https://thingspeak.mathworks.com/channels/3167169/widgets/1176645"></iframe>
+
+          <!-- Water Needed Zone B -->
+          <iframe src="https://thingspeak.mathworks.com/channels/3167169/widgets/1176648"></iframe>
+
+        </div>
+      </section>
+
     </main>
   </body>
 </html>
