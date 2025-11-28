@@ -36,10 +36,12 @@
       <!-- MODE CONTROL -->
       <section class="card">
         <h2>System Mode</h2>
+
         <div class="mode-buttons">
           <button class="btn" id="btnAuto">AUTO</button>
           <button class="btn" id="btnManual">MANUAL</button>
         </div>
+
         <p class="small">
           Current Mode: <span id="currentMode">Loading...</span>
         </p>
@@ -50,23 +52,21 @@
         <h2>Pump Override (Manual Mode)</h2>
 
         <div class="pump-grid" style="display: flex; gap: 20px">
+          
           <div class="pump-card card" style="flex: 1">
             <h3>Pump A</h3>
-            <button class="btn on" data-pump="pumpA" data-val="on">ON</button>
-            <button class="btn off" data-pump="pumpA" data-val="off">
-              OFF
-            </button>
-            <p>Status: <span id="pumpAStatus">--</span></p>
+            <button class="btn on pump-btn" data-pump="pump1" data-val="ON">ON</button>
+            <button class="btn off pump-btn" data-pump="pump1" data-val="OFF">OFF</button>
+            <p>Status: <span id="pump1Status">--</span></p>
           </div>
 
           <div class="pump-card card" style="flex: 1">
             <h3>Pump B</h3>
-            <button class="btn on" data-pump="pumpB" data-val="on">ON</button>
-            <button class="btn off" data-pump="pumpB" data-val="off">
-              OFF
-            </button>
-            <p>Status: <span id="pumpBStatus">--</span></p>
+            <button class="btn on pump-btn" data-pump="pump2" data-val="ON">ON</button>
+            <button class="btn off pump-btn" data-pump="pump2" data-val="OFF">OFF</button>
+            <p>Status: <span id="pump2Status">--</span></p>
           </div>
+
         </div>
       </section>
 
@@ -75,21 +75,31 @@
         <h2>Live Moisture</h2>
 
         <div class="gauge-grid">
+
           <div class="gauge">
             <p>Sensor A</p>
-            <div class="meter"><div class="meter-fill" id="gA">0%</div></div>
+            <div class="meter">
+              <div class="meter-fill" id="sensor1Gauge">0%</div>
+            </div>
           </div>
 
           <div class="gauge">
             <p>Sensor B</p>
-            <div class="meter"><div class="meter-fill" id="gB">0%</div></div>
+            <div class="meter">
+              <div class="meter-fill" id="sensor2Gauge">0%</div>
+            </div>
           </div>
+
         </div>
       </section>
     </main>
 
+    <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <!-- MAIN JS LOGIC -->
     <script src="app.js"></script>
+
   </body>
 </html>
