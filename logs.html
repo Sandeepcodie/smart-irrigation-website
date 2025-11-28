@@ -2,8 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Logs</title>
+    <title>Logs | Smart Irrigation</title>
     <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      .download-btn {
+        margin-top: 15px;
+        background: var(--accent);
+        color: #001816;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+      }
+      .download-btn:hover {
+        background: var(--accent-dark);
+      }
+    </style>
   </head>
 
   <body>
@@ -22,12 +38,107 @@
 
     <main class="container">
       <section class="card">
-        <h2>Logs</h2>
-        <p class="muted">
-          This page is currently empty. Later you can display pump history or
-          Firebase logs here.
-        </p>
+        <h2>System Logs</h2>
+        <p class="muted" id="logStatus">Loading logs...</p>
+
+        <table class="table" id="logTable">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Event</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <button class="download-btn" id="downloadCSV">Download CSV</button>
       </section>
     </main>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <!-- Logs Script -->
+    <script>
+      // ------------------------------------------------------------
+      //  FIREBASE CONFIG  (replace with your real config)
+      // ------------------------------------------------------------
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT.firebaseapp.com",
+        databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+        projectId: "YOUR_PROJECT",
+        storageBucket: "YOUR_PROJECT.appspot.com",
+        messagingSenderId: "XXXX",
+        appId: "XXXX"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
+
+      const logTableBody = document.querySelector("#logTable tbody");
+      const logStatus = document.getElementById("logStatus");
+
+      function formatTime(ts) {
+        return new Date(Number(ts)).toLocaleString();
+      }
+
+      // ------------------------------------------------------------
+      //  LOAD LOGS
+      // ------------------------------------------------------------
+      db.ref("/logs").on("value", snap => {
+        logTableBody.innerHTML = "";
+
+        const logs = snap.val();
+        if (!logs) {
+          logStatus.innerText = "No logs available.";
+          return;
+        }
+
+        logStatus.innerText = "Showing latest logs.";
+
+        Object.keys(logs)
+          .sort((a, b) => b - a)
+          .forEach(key => {
+            const entry = logs[key];
+            const tr = document.createElement("tr");
+
+            tr.innerHTML = `
+              <td>${formatTime(key)}</td>
+              <td>${entry.event}</td>
+              <td>${entry.value}</td>
+            `;
+
+            logTableBody.appendChild(tr);
+          });
+      });
+
+      // ------------------------------------------------------------
+      //  CSV DOWNLOAD
+      // ------------------------------------------------------------
+      document.getElementById("downloadCSV").onclick = () => {
+        db.ref("/logs").once("value", snap => {
+          const logs = snap.val();
+          if (!logs) return alert("No logs to download!");
+
+          let csv = "timestamp,event,value\n";
+
+          Object.keys(logs).forEach(ts => {
+            csv += `"${formatTime(ts)}","${logs[ts].event}","${logs[ts].value}"\n`;
+          });
+
+          const blob = new Blob([csv], { type: "text/csv" });
+          const url = URL.createObjectURL(blob);
+
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "irrigation_logs.csv";
+          a.click();
+          URL.revokeObjectURL(url);
+        });
+      };
+    </script>
   </body>
 </html>
