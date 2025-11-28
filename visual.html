@@ -2,11 +2,34 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Visual Representation</title>
+    <title>Visual Representation | Smart Irrigation</title>
     <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      iframe {
+        width: 100%;
+        height: 360px;
+        border-radius: 14px;
+        border: none;
+        background: white;
+      }
+
+      .visual-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .visual-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
 
   <body>
+    <!-- NAVBAR -->
     <nav class="navbar">
       <div class="nav-left">
         <div class="logo-box">SM</div>
@@ -21,12 +44,42 @@
     </nav>
 
     <main class="container">
+
       <section class="card">
         <h2>Visual Representation</h2>
         <p class="muted">
-          This page is currently empty. You can add ThingSpeak charts or visual
-          graphs later.
+          Live moisture readings and analytics rendered directly from ThingSpeak
+          channels. Auto-updates every 20 seconds.
         </p>
+      </section>
+
+      <!-- ThingSpeak Live Charts -->
+      <section class="card">
+        <h2>Live Charts</h2>
+
+        <div class="visual-grid">
+
+          <!-- Sensor A -->
+          <iframe
+            src="https://thingspeak.com/channels/3165085/charts/1?bgcolor=%23050b16&color=%232de4c7&dynamic=true&type=line&results=60&update=20"
+          ></iframe>
+
+          <!-- Sensor B -->
+          <iframe
+            src="https://thingspeak.com/channels/3165085/charts/2?bgcolor=%23050b16&color=%231fae96&dynamic=true&type=line&results=60&update=20"
+          ></iframe>
+
+          <!-- Zone A Analytics -->
+          <iframe
+            src="https://thingspeak.com/channels/3167169/charts/1?bgcolor=%23050b16&color=%232de4c7&dynamic=true&type=line&results=60&update=20"
+          ></iframe>
+
+          <!-- Zone B Analytics -->
+          <iframe
+            src="https://thingspeak.com/channels/3167169/charts/2?bgcolor=%2311162b&color=%230aada1&dynamic=true&type=line&results=60&update=20"
+          ></iframe>
+
+        </div>
       </section>
     </main>
   </body>
