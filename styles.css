@@ -1,4 +1,6 @@
-/* ---------- GLOBAL THEME ---------- */
+/* -------------------------------------------------------
+   GLOBAL THEME
+------------------------------------------------------- */
 :root {
   --bg: #0a0f1f;
   --card: #11182b;
@@ -22,7 +24,9 @@ body {
   color: var(--text);
 }
 
-/* ---------- NAVBAR ---------- */
+/* -------------------------------------------------------
+   NAVBAR
+------------------------------------------------------- */
 .navbar {
   height: 68px;
   padding: 0 30px;
@@ -40,7 +44,6 @@ body {
   gap: 14px;
 }
 
-/* SM logo block */
 .logo-box {
   width: 48px;
   height: 48px;
@@ -77,14 +80,18 @@ body {
   color: var(--accent);
 }
 
-/* ---------- MAIN CONTAINER ---------- */
+/* -------------------------------------------------------
+   MAIN CONTAINER
+------------------------------------------------------- */
 .container {
   max-width: 1080px;
   margin: 30px auto;
   padding: 0 20px;
 }
 
-/* ---------- CARDS ---------- */
+/* -------------------------------------------------------
+   CARDS
+------------------------------------------------------- */
 .card {
   background: var(--glass);
   border: 1px solid var(--stroke);
@@ -99,7 +106,9 @@ h2 {
   font-weight: 700;
 }
 
-/* ---------- BUTTONS ---------- */
+/* -------------------------------------------------------
+   BUTTONS
+------------------------------------------------------- */
 .btn {
   background: transparent;
   border: 1px solid var(--accent);
@@ -129,7 +138,9 @@ h2 {
   color: #fff;
 }
 
-/* ---------- STUDENT CARD ---------- */
+/* -------------------------------------------------------
+   STUDENT CARD
+------------------------------------------------------- */
 .student-info {
   display: flex;
   justify-content: flex-end;
@@ -165,7 +176,9 @@ h2 {
   color: var(--accent);
 }
 
-/* ---------- GAUGES ---------- */
+/* -------------------------------------------------------
+   GAUGES
+------------------------------------------------------- */
 .gauge-grid {
   display: flex;
   gap: 20px;
@@ -195,7 +208,9 @@ h2 {
   transition: width 0.7s ease;
 }
 
-/* ---------- TABLES (LOGS PAGE) ---------- */
+/* -------------------------------------------------------
+   LOGS TABLE
+------------------------------------------------------- */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -213,7 +228,9 @@ h2 {
   font-weight: 700;
 }
 
-/* ---------- IFRAME GRID (VISUAL PAGE) ---------- */
+/* -------------------------------------------------------
+   VISUAL PAGE: IFRAME GRID
+------------------------------------------------------- */
 .visual-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -226,4 +243,10 @@ iframe {
   border-radius: 14px;
   border: none;
   background: white;
+}
+
+@media (max-width: 768px) {
+  .visual-grid {
+    grid-template-columns: 1fr;
+  }
 }
